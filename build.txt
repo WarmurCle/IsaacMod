@@ -1,0 +1,4 @@
+displayName = Isaac Mod
+author = Polaris
+version = 0.1
+weakReferences = CalamityMod

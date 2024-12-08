@@ -1,0 +1,16 @@
+Items: {
+	TheSadOnion: {
+		Tooltip: 射速上升
+		DisplayName: 悲伤洋葱
+	}
+
+	InnerEye: {
+		Tooltip: 三向射击
+		DisplayName: 内眼
+	}
+
+	SpoonBender: {
+		DisplayName: 碗勺魔术
+		Tooltip: 追踪射弹
+	}
+}

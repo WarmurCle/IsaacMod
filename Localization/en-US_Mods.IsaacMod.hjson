@@ -1,0 +1,16 @@
+Items: {
+	TheSadOnion: {
+		Tooltip: Attack speed up
+		DisplayName: The Sad Onion
+	}
+
+	InnerEye: {
+		Tooltip: Triple shot
+		DisplayName: Inner Eye
+	}
+
+	SpoonBender: {
+		DisplayName: Spoon Bender
+		Tooltip: Homing projectiles
+	}
+}
