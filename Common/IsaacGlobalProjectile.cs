@@ -41,6 +41,7 @@ namespace IsaacMod.Common
             heldProjs = null;
         }
         public override bool InstancePerEntity => true;
+        public float homingSpeed { get; set; }
         public static bool canInnerEyeSpawnProjNow = true;
         public float InnerEyeRot = 0;
         public static bool overrideNewProjsInnerEyeRot = false;
@@ -65,9 +66,8 @@ namespace IsaacMod.Common
                 Main.mouseY = (int)newScreenMouse.Y;
                 resetMousePos = true;
             }
-            if(projectile.owner >= 0 && Main.player[projectile.owner].Isaac().hasCollectible(SpoonBender.Id))
+            if(projectile.owner >= 0 && Main.player[projectile.owner].Isaac().hasCollectible(SpoonBender.Id) && projectile.friendly)
             {
-                float homingSpeed = projectile.velocity.Length() * 0.1f;
                 NPC target = projectile.FindTargetWithinRange(Math.Max(projectile.width, projectile.height) + 500, projectile.tileCollide);
                 if (target != null)
                 {
@@ -97,7 +97,8 @@ namespace IsaacMod.Common
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             bool noNewRot = false;
-            if(source is EntitySource_Parent es)
+            homingSpeed = projectile.velocity.Length() * 0.1f;
+            if (source is EntitySource_Parent es)
             {
                 if(es.Entity is Projectile proj)
                 {
