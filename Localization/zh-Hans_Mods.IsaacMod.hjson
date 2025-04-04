@@ -10,7 +10,37 @@ Items: {
 	}
 
 	SpoonBender: {
-		DisplayName: 碗勺魔术
+		DisplayName: 弯勺魔术
 		Tooltip: 追踪射弹
+	}
+
+	CricketsHead: {
+		DisplayName: 柯吉猫的头
+		Tooltip: 伤害上升
+	}
+
+	MyReflection: {
+		Tooltip: 回旋泪弹+伤害上升+运气下降
+		DisplayName: 我的镜像
+	}
+
+	NumberOne: {
+		DisplayName: 小号
+		Tooltip: 射速上升
+	}
+
+	BrotherBobby: {
+		Tooltip: 还没做完
+		DisplayName: 波比兄弟
+	}
+
+	BloodOfTheMartyr: {
+		Tooltip: 伤害上升
+		DisplayName: 殉道者之血
+	}
+
+	Suplex: {
+		DisplayName: 背摔！
+		Tooltip: ""
 	}
 }

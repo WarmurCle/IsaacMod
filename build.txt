@@ -1,4 +1,4 @@
 displayName = Isaac Mod
 author = Polaris
-version = 0.1
+version = 0.4
 weakReferences = CalamityMod

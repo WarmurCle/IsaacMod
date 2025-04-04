@@ -1,0 +1,46 @@
+Items: {
+	TheSadOnion: {
+		Tooltip: Скорость атаки увеличивается.
+		DisplayName: Печальный лук
+	}
+
+	InnerEye: {
+		Tooltip: Тройная стрельба
+		DisplayName: Внутренний глаз
+	}
+
+	SpoonBender: {
+		DisplayName: Магия изогнутой ложки
+		Tooltip: Отслеживание снарядов
+	}
+
+	CricketsHead: {
+		DisplayName: Голова Корги
+		Tooltip: Повреждения растут
+	}
+
+	MyReflection: {
+		Tooltip: Циркуляционный снаряд + Голова Корги + Удача падает
+		DisplayName: Мое зеркало.
+	}
+
+	NumberOne: {
+		DisplayName: Труба
+		Tooltip: Скорость атаки увеличивается.
+	}
+
+	BrotherBobby: {
+		Tooltip: ""
+		DisplayName: Brother Bobby
+	}
+
+	BloodOfTheMartyr: {
+		Tooltip: Повышенные повреждения при атаке
+		DisplayName: Кровь мучеников
+	}
+
+	Suplex: {
+		DisplayName: Упал.
+		Tooltip: ""
+	}
+}

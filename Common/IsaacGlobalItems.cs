@@ -1,4 +1,4 @@
-﻿using IsaacMod.Content.Items.Accessories;
+﻿using IsaacMod.Content.Items.Collectibles;
 using IsaacMod.Utils;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;

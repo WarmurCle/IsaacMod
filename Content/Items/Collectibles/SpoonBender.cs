@@ -3,16 +3,15 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace IsaacMod.Content.Items.Accessories
+namespace IsaacMod.Content.Items.Collectibles
 {
 	public class SpoonBender : Collectible
 	{
         public static string Id { get { return "SpoonBender"; } }
-        public override void UpdateAccessory(Player player, bool hideVisual)
+        public override string ID => Id;
+        public override float getWeight()
         {
-            player.Isaac().setCollectible(Id, true);
+            return 0.9f;
         }
-
-        
     }
 }

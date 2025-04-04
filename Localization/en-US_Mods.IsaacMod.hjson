@@ -13,4 +13,34 @@ Items: {
 		DisplayName: Spoon Bender
 		Tooltip: Homing projectiles
 	}
+
+	CricketsHead: {
+		DisplayName: Crickets Head
+		Tooltip: DMG up
+	}
+
+	MyReflection: {
+		Tooltip: Boomerang projectiles + DMG up + luck down
+		DisplayName: My Reflection
+	}
+
+	NumberOne: {
+		DisplayName: Number One
+		Tooltip: ""
+	}
+
+	BrotherBobby: {
+		Tooltip: ""
+		DisplayName: Brother Bobby
+	}
+
+	BloodOfTheMartyr: {
+		Tooltip: ""
+		DisplayName: Blood Of The Martyr
+	}
+
+	Suplex: {
+		DisplayName: Suplex
+		Tooltip: ""
+	}
 }

@@ -1,1 +1,19 @@
-Modify this file with a description of your mod.
+此mod加入了一些来自《以撒的结合》里的道具，并在之后持续更新。
+道具会在首次击败一个boss时随机掉落1件，可以左键永久性的使用并获得其效果，部分道具效果可以叠加
+一些指令
+/isaac all  获取所有的道具ID
+/isaac get 获取自身使用的所有道具数量
+/isaac add [道具ID] [数量] 获得指定数量个特定的道具（主动道具获取后无效果）
+/isaac reset 清除boss击杀记录，这会使你再次击杀曾经击杀过的boss会再次掉落道具（注：此纪录与原版和其余模组以及boss checklist里的击杀记录独立，只会影响道具掉落）
+/isaac clear 清除自身所有道具
+/isaac boss 获取当前所有击败并掉落过道具的boss数字ID
+
+This mod has added some props from Binding of Isaac and will continue to be updated thereafter.
+The item will randomly drop 1 item when defeating a boss for the first time, which can be left clicked to permanently use and obtain its effect. Some item effects can be stacked
+Some instructions
+/Isaac all - retrieves all item IDs
+/Isaac get - retrieves the quantity of all props used by oneself
+/Isaac add [item ID] [quantity] - to obtain a specified number of specific items (active items have no effect after acquisition)
+/Isaac reset - clears boss kill records, which will cause you to drop items again when killing bosses you have killed before (note: this record is independent of the original version, other mods, and boss checklists, and only affects item drops)
+/Isaac clear - clears all of its own props
+/Isaac boss - retrieves the digital IDs of all bosses who have defeated and dropped items

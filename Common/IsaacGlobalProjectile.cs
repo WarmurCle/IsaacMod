@@ -1,5 +1,5 @@
 ﻿using CalamityMod.Projectiles.Ranged;
-using IsaacMod.Content.Items.Accessories;
+using IsaacMod.Content.Items.Collectibles;
 using IsaacMod.Utils;
 using Microsoft.Xna.Framework;
 using System;
@@ -49,8 +49,22 @@ namespace IsaacMod.Common
         public static Vector2 lastMouse;
         public bool resetMousePos = false;
         public bool InnerEyeInited = false;
+        public int counter = 0;
+        public int timeleftMax = 10000;
+        public Entity shootOwner = null;
+        public bool hited = false;
         public override bool PreAI(Projectile projectile)
         {
+            counter++;
+            if((counter > timeleftMax * 0.27f || counter > 160) && projectile.friendly && projectile.owner >= 0 && Main.player[projectile.owner].Isaac().hasCollectible(MyReflection.Id))
+            {
+                if (shootOwner != null)
+                {
+                    projectile.velocity += (shootOwner.Center - projectile.Center).SafeNormalize(Vector2.Zero) * 0.1f;
+                    projectile.velocity *= 0.99f;
+
+                }
+            }
             if(InnerEyeRot != 0 && !InnerEyeInited)
             {
                 InnerEyeInited = true;
@@ -66,22 +80,33 @@ namespace IsaacMod.Common
                 Main.mouseY = (int)newScreenMouse.Y;
                 resetMousePos = true;
             }
-            if(projectile.owner >= 0 && Main.player[projectile.owner].Isaac().hasCollectible(SpoonBender.Id) && projectile.friendly)
+            if(!hited && projectile.owner >= 0 && Main.player[projectile.owner].Isaac().hasCollectible(SpoonBender.Id) && projectile.friendly)
             {
                 NPC target = projectile.FindTargetWithinRange(Math.Max(projectile.width, projectile.height) + 500, projectile.tileCollide);
                 if (target != null)
                 {
-                    projectile.velocity += (target.Center - projectile.Center).SafeNormalize(Vector2.Zero) * homingSpeed;
-                    projectile.velocity *= 1 - homingSpeed * (projectile.tileCollide ? 0.05f : 0.02f);
+                    for(int i = 0; i < Main.player[projectile.owner].Isaac().getCollectibleCount(SpoonBender.Id); i++)
+                    {
+                        projectile.velocity += (target.Center - projectile.Center).SafeNormalize(Vector2.Zero) * homingSpeed;
+                        projectile.velocity *= 1 - homingSpeed * (projectile.tileCollide ? 0.05f : 0.02f);
+                    }
                 }
             }
             return true;
         }
         public override bool PreDraw(Projectile projectile, ref Color lightColor)
         {
-            if (projectile.owner >= 0 && Main.player[projectile.owner].Isaac().hasCollectible(SpoonBender.Id))
+            if (projectile.friendly && projectile.owner >= 0 && Main.player[projectile.owner].Isaac().hasCollectible(SpoonBender.Id))
             {
                 lightColor = new Color(255, 64, 255);
+            }
+            if (projectile.friendly && projectile.owner >= 0 && Main.player[projectile.owner].Isaac().hasCollectible(NumberOne.Id))
+            {
+                lightColor = new Color(255, 255, 40);
+            }
+            if (projectile.friendly && projectile.owner >= 0 && Main.player[projectile.owner].Isaac().hasCollectible(BloodOfTheMartyr.Id))
+            {
+                lightColor = new Color(255, 25, 25);
             }
             return base.PreDraw(projectile, ref lightColor);
         }
@@ -96,10 +121,12 @@ namespace IsaacMod.Common
         }
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
+            timeleftMax = projectile.timeLeft;
             bool noNewRot = false;
             homingSpeed = projectile.velocity.Length() * 0.1f;
             if (source is EntitySource_Parent es)
             {
+                shootOwner = es.Entity;
                 if(es.Entity is Projectile proj)
                 {
                     if (proj.Isaac().InnerEyeRot != 0)
@@ -107,6 +134,13 @@ namespace IsaacMod.Common
                         noNewRot = true;
                     }
                     InnerEyeRot = proj.Isaac().InnerEyeRot;
+                }
+                if(es.Entity is Player plr)
+                {
+                    if (plr.Isaac().hasCollectible(NumberOne.Id))
+                    {
+                        projectile.timeLeft = (int)Math.Round(projectile.timeLeft * 0.8f);
+                    }
                 }
             }
             if (overrideNewProjsInnerEyeRot && !noNewRot)
@@ -149,6 +183,10 @@ namespace IsaacMod.Common
             }
         }
 
+        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            hited = true;
+        }
         public override void SendExtraAI(Projectile projectile, BitWriter bitWriter, BinaryWriter binaryWriter)
         {
             binaryWriter.Write(InnerEyeRot);
